@@ -5,7 +5,7 @@
 	historybrowser = gitk
 [diff]
 	tool = Kaleidoscope
-[url "https://"]gi
+[url "https://"]
 	insteadOf = git://
 [difftool "Kaleidoscope"]
 	cmd = ksdiff --partial-changeset --relative-path \"$MERGED\" -- \"$LOCAL\" \"$REMOTE\"

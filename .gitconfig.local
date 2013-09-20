@@ -1,0 +1,24 @@
+[alias]
+    glog = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative --all
+[gui]
+	editor = \"/Applications/Sublime Text 2.app/Contents/SharedSupport/bin/subl\"
+	historybrowser = gitk
+[diff]
+	tool = Kaleidoscope
+[url "https://"]gi
+	insteadOf = git://
+[difftool "Kaleidoscope"]
+	cmd = ksdiff --partial-changeset --relative-path \"$MERGED\" -- \"$LOCAL\" \"$REMOTE\"
+[diff]
+	tool = Kaleidoscope
+[difftool]
+	prompt = false
+[merge]
+	tool = Kaleidoscope
+[mergetool "Kaleidoscope"]
+	cmd = ksdiff --merge --output \"$MERGED\" --base \"$BASE\" -- \"$LOCAL\" --snapshot \"$REMOTE\" --snapshot
+	trustExitCode = true
+[mergetool]
+	prompt = false
+[include]
+	path = ~/.gitconfig.x.local

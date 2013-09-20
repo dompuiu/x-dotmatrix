@@ -1,0 +1,60 @@
+" Color Scheme
+colo jellybeans
+
+" Font
+set guifont=Monaco:h12
+
+" Show line numbers
+set number
+
+" Show cursor line
+set cursorline
+
+" Set Tab
+set tabstop=4
+set shiftwidth=4
+set softtabstop=4
+set expandtab
+set smarttab
+
+" Set Case
+set ignorecase
+set smartcase
+
+" Modify the GUI
+set guioptions-=T "Hide Toolbar
+set guioptions-=m "Hide menu
+set guioptions-=r "Hide right toolbar
+set guioptions-=L "Hide left toolbar
+
+" Disable Wrap
+set wrap!
+
+"Highlight when over 80 chars
+set colorcolumn=80
+
+"highlight matches
+set hlsearch
+
+" Load Matchit macro
+runtime! macros/matchit.vim
+
+" Move lines with CTRL + SHIFT + Up / Down
+nnoremap <C-S-Down> :m+<CR>
+nnoremap <C-S-Up> :m-2<CR>
+inoremap <C-S-Down> <Esc>:m+<CR>==gi
+inoremap <C-S-Up> <Esc>:m-2<CR>==gi
+vnoremap <C-S-Down> :m'>+<CR>gv=gv
+vnoremap <C-S-Up> :m-2<CR>gv=gv
+
+" Press Space to turn off highlighting and clear any message already displayed.
+:nnoremap <silent> <Space> :nohlsearch<Bar>:echo<CR>
+
+" Persistent Undo
+set undofile
+set undolevels=1000 "maximum number of changes that can be undone
+set undoreload=10000 "maximum number lines to save for undo on a buffer reload
+
+if filereadable(expand('~/.vimrc.plugins.local'))
+  source ~/.vimrc.plugins.local
+endif

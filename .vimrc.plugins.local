@@ -1,0 +1,34 @@
+"CtrlP
+
+" double percentage sign in command mode is expanded
+" to directory of current file - http://vimcasts.org/e/14
+cnoremap %% <C-R>=expand('%:h').'/'<cr>
+
+map ,f :CtrlP<cr>
+map ,F :CtrlP %%<cr>
+map ,b :CtrlPBuffer<cr>
+
+" Indent Guides
+let g:indent_guides_color_change_percent = 3
+let g:indent_guides_start_level = 2
+let g:indent_guides_guide_size = 1
+let g:indent_guides_enable_on_vim_startup = 1
+
+" Syntastic plugin config
+let g:syntastic_phpcs_conf="--standard=Avira"
+let g:syntastic_auto_loc_list=1
+let g:syntastic_mode_map={ 'mode': 'passive' }
+let g:syntastic_stl_format='[%E{Err: %fe #%e}%B{, }%W{Warn: %fw #%w}]'
+let g:syntastic_check_on_open=0
+let g:syntastic_enable_balloons=1
+let g:syntastic_enable_signs=1
+let g:syntastic_enable_highlighting=1
+
+" NerdTree
+let g:NERDTreeDirArrows=0
+
+" NerdTreeTabs
+let g:nerdtree_tabs_open_on_console_startup=1
+
+" Vim Airline
+let g:airline#extensions#tabline#enabled = 1

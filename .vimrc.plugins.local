@@ -42,4 +42,4 @@ let g:no_turbux_mappings = 1
 
 " Neo Complete Cache
 let g:neocomplcache_enable_at_startup = 1
-let g:neocomplcache_temporary_dir="~/Library/Vim/.neocon"
+let g:neocomplcache_temporary_dir="/tmp/.neocon"

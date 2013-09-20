@@ -4,6 +4,7 @@
 " to directory of current file - http://vimcasts.org/e/14
 cnoremap %% <C-R>=expand('%:h').'/'<cr>
 
+let g:ctrlp_map = ''
 map ,f :CtrlP<cr>
 map ,F :CtrlP %%<cr>
 map ,b :CtrlPBuffer<cr>
@@ -32,3 +33,13 @@ let g:nerdtree_tabs_open_on_console_startup=1
 
 " Vim Airline
 let g:airline#extensions#tabline#enabled = 1
+
+" Vim EasyMotion
+let g:EasyMotion_leader_key = '<Leader>'
+
+" Vim Turbux
+let g:no_turbux_mappings = 1
+
+" Neo Complete Cache
+let g:neocomplcache_enable_at_startup = 1
+let g:neocomplcache_temporary_dir="~/Library/Vim/.neocon"

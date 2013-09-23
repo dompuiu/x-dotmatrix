@@ -62,6 +62,18 @@ vnoremap > >gv
 " Force Saving Files that Require Root Permission
 cmap w!! %!sudo tee > /dev/null %
 
+"Remap leader to comma
+let mapleader = ","
+
+" Highlight trailing whitespace in vim on non empty lines, but not while
+" " typing in insert mode!
+highlight ExtraWhitespace ctermbg=red guibg=Brown
+au ColorScheme * highlight ExtraWhitespace guibg=red
+au BufEnter * match ExtraWhitespace /\S\zs\s\+$/
+
+" Remove All the Trailing Whitespaces
+nnoremap <C-S-t> :%s/\s\+$//<cr>:let @/=''<cr>``
+
 if filereadable(expand('~/.vimrc.plugins.local'))
   source ~/.vimrc.plugins.local
 endif

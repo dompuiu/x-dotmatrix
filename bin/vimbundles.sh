@@ -15,11 +15,11 @@ get_bundle() {
   )
 }
 
-#dotmatrix_vimbundles=~/dotmatrix/bin/vimbundles.sh
-#if [ -f $dotmatrix_vimbundles ];
-#then
-#    $dotmatrix_vimbundles
-#fi
+dotmatrix_vimbundles=~/dotmatrix/bin/vimbundles.sh
+if [ -f $dotmatrix_vimbundles ];
+then
+    $dotmatrix_vimbundles
+fi
 
 
 get_bundle nanotech jellybeans.vim

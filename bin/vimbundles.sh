@@ -39,6 +39,7 @@ get_bundle evanmiller nginx-vim-syntax
 get_bundle terryma vim-multiple-cursors
 get_bundle vim-scripts Emmet.vim
 get_bundle Shougo neocomplcache
+get_bundle klen python-mode
 #get_bundle vim-scripts YankRing.vim
 
 vim -c 'call pathogen#helptags()|q'

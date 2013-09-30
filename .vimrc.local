@@ -71,6 +71,14 @@ vnoremap > >gv
 " Force Saving Files that Require Root Permission
 cmap w!! %!sudo tee > /dev/null %
 
+" Enable omni completion.
+autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+autocmd FileType php set omnifunc=phpcomplete#CompletePHP
+
 " Highlight trailing whitespace in vim on non empty lines, but not while
 " " typing in insert mode!
 highlight ExtraWhitespace ctermbg=red guibg=Brown

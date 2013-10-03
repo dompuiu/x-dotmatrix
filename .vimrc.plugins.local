@@ -39,49 +39,21 @@ let g:airline#extensions#tabline#enabled = 1
 let g:no_turbux_mappings = 1
 
 " Neo Complete Cache
-let g:neocomplcache_temporary_dir="/tmp/.neocon"
-
-" Use neocomplcache.
-let g:neocomplcache_enable_at_startup = 1
-" Use smartcase.
-let g:neocomplcache_enable_smart_case = 1
-" Set minimum syntax keyword length.
-let g:neocomplcache_min_syntax_length = 3
-let g:neocomplcache_lock_buffer_name_pattern = '\*ku\*'
-
-" Enable heavy features.
-" Use camel case completion.
-let g:neocomplcache_enable_camel_case_completion = 1
-" Use underbar completion.
-let g:neocomplcache_enable_underbar_completion = 1
-
-" Define dictionary.
-let g:neocomplcache_dictionary_filetype_lists = {
-    \ 'default' : '',
-    \ 'vimshell' : $HOME.'/.vimshell_hist',
-    \ 'scheme' : $HOME.'/.gosh_completions'
-        \ }
-
-" Define keyword.
-if !exists('g:neocomplcache_keyword_patterns')
-    let g:neocomplcache_keyword_patterns = {}
+let g:neocomplete#enable_at_startup = 1
+let g:neocomplete#max_list = 20
+let g:neocomplete#enable_prefetch = 1
+let g:neocomplete#data_directory = '/tmp/.neocomplete'
+let g:neocomplete#force_overwrite_completefunc = 1
+if !exists('g:neocomplete#force_omni_input_patterns')
+    let g:neocomplete#force_omni_input_patterns = {}
 endif
-let g:neocomplcache_keyword_patterns['default'] = '\h\w*'
+let g:neocomplete#force_omni_input_patterns.ruby =
+\ '[^. *\t]\.\w*\|\h\w*::'
 
-" Plugin key-mappings.
-inoremap <expr><C-g>     neocomplcache#undo_completion()
 
-" Enable heavy omni completion.
-if !exists('g:neocomplcache_omni_patterns')
-  let g:neocomplcache_omni_patterns = {}
-endif
-if !exists('g:neocomplcache_force_omni_patterns')
-  let g:neocomplcache_force_omni_patterns = {}
-endif
-let g:neocomplcache_omni_patterns.php =
-\ '[^. \t]->\%(\h\w*\)\?\|\h\w*::\%(\h\w*\)\?'
-let g:neocomplcache_omni_patterns.c =
-\ '[^.[:digit:] *\t]\%(\.\|->\)\%(\h\w*\)\?'
-let g:neocomplcache_omni_patterns.cpp =
-\ '[^.[:digit:] *\t]\%(\.\|->\)\%(\h\w*\)\?\|\h\w*::\%(\h\w*\)\?'
-
+" Vim Ruby
+let ruby_operators = 1
+let ruby_fold = 1
+let g:rubycomplete_buffer_loading = 1
+let g:rubycomplete_classes_in_global = 1
+let g:rubycomplete_rails = 1

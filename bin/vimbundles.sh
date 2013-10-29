@@ -15,6 +15,13 @@ get_bundle() {
   )
 }
 
+remove_bundle() {
+  (
+    echo "Removing bundle $1"
+    rm -rf $1
+  )
+}
+
 dotmatrix_vimbundles=~/dotmatrix/bin/vimbundles.sh
 if [ -f $dotmatrix_vimbundles ];
 then
@@ -24,7 +31,6 @@ fi
 
 get_bundle nanotech jellybeans.vim
 get_bundle editorconfig editorconfig-vim
-get_bundle kien ctrlp.vim
 get_bundle nathanaelkane vim-indent-guides
 get_bundle scrooloose nerdtree
 get_bundle jistr vim-nerdtree-tabs
@@ -39,10 +45,15 @@ get_bundle evanmiller nginx-vim-syntax
 get_bundle terryma vim-multiple-cursors
 get_bundle vim-scripts Emmet.vim
 get_bundle Shougo neocomplete.vim
-#get_bundle supermomonga neocomplete-rsense.vim
 get_bundle Shougo vimproc
 get_bundle Shougo context_filetype.vim
 get_bundle klen python-mode
 get_bundle vim-scripts YankRing.vim
+get_bundle Shougo unite.vim
+get_bundle tsukkee unite-tag
+get_bundle basyura unite-rails
+
+remove_bundle bufexplorer.zip
+remove_bundle ack.vim
 
 vim -c 'call pathogen#helptags()|q'

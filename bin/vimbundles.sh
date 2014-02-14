@@ -45,15 +45,22 @@ get_bundle evanmiller nginx-vim-syntax
 get_bundle terryma vim-multiple-cursors
 get_bundle vim-scripts Emmet.vim
 get_bundle Shougo neocomplete.vim
-get_bundle Shougo vimproc
+get_bundle Shougo vimproc.vim
 get_bundle Shougo context_filetype.vim
 get_bundle klen python-mode
 get_bundle vim-scripts YankRing.vim
 get_bundle Shougo unite.vim
 get_bundle tsukkee unite-tag
 get_bundle basyura unite-rails
+get_bundle xolox vim-misc
+get_bundle xolox vim-session
 
 remove_bundle bufexplorer.zip
 remove_bundle ack.vim
+remove_bundle supertab
 
 vim -c 'call pathogen#helptags()|q'
+
+cd ~/.vimbundles/vimproc.vim
+make -f make_mac.mak
+cd -

@@ -51,3 +51,7 @@ unsetopt correct_all
 unalias run-help
 autoload run-help
 HELPDIR=/usr/local/share/zsh/helpfiles
+
+xzrcl="$HOME/.zshrc.x.local"
+[[ ! -a $xzrcl ]] || source $xzrcl
+

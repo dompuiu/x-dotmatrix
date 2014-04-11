@@ -58,6 +58,7 @@ get_bundle xolox vim-session
 remove_bundle bufexplorer.zip
 remove_bundle ack.vim
 remove_bundle supertab
+remove_bundle bufkill.vim
 
 vim -c 'call pathogen#helptags()|q'
 

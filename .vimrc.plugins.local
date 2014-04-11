@@ -30,7 +30,8 @@ let g:neocomplete#max_list = 20
 let g:neocomplete#enable_prefetch = 1
 let g:neocomplete#data_directory = '/tmp/.neocomplete'
 let g:neocomplete#force_overwrite_completefunc = 1
-let g:neocomplete#auto_completion_start_length = 10
+let g:neocomplete#disable_auto_complete = 1
+let g:neocomplete#enable_auto_select = 0
 if !exists('g:neocomplete#force_omni_input_patterns')
     let g:neocomplete#force_omni_input_patterns = {}
 endif
@@ -44,7 +45,7 @@ let g:neocomplete#sources#omni#input_patterns.cucumber =
 \ '\(When\|Then\|Given\|And\)\s.*$'
 
 " <TAB>: completion.
-inoremap <expr><TAB>  neocomplete#start_manual_complete()
+" inoremap <expr><TAB>  neocomplete#start_manual_complete()
 
 " I want to complete from all buffers.
  let g:neocomplcache_same_filetype_lists = {}
@@ -118,3 +119,4 @@ nnoremap [unite]r :Unite rails/
 " Session Save
 let g:session_autoload = 'yes'
 let g:session_autosave = 'yes'
+let g:session_directory= '~/.vim_sessions/'

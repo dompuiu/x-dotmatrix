@@ -52,8 +52,6 @@ get_bundle vim-scripts YankRing.vim
 get_bundle Shougo unite.vim
 get_bundle tsukkee unite-tag
 get_bundle basyura unite-rails
-get_bundle xolox vim-misc
-get_bundle xolox vim-session
 
 remove_bundle bufexplorer.zip
 remove_bundle ack.vim

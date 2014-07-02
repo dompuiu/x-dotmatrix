@@ -52,7 +52,7 @@ vnoremap <C-S-Down> :m'>+<CR>gv=gv
 vnoremap <C-S-Up> :m-2<CR>gv=gv
 
 " Press Space to turn off highlighting and clear any message already displayed.
-:nnoremap <silent> <Space><Space> :nohlsearch<Bar>:echo<CR>
+:nnoremap <silent> <Space> :nohlsearch<Bar>:echo<CR>
 
 " Persistent Undo
 set undofile

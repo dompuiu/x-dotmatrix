@@ -1,5 +1,9 @@
+" Add gem tags
+set tags+=gems.tags
+
 " Color Scheme
-colo jellybeans
+let g:hybrid_use_iTerm_colors = 1
+colorscheme hybrid
 
 " Font
 set guifont=Monaco:h12

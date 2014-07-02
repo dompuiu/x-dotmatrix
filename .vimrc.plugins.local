@@ -18,9 +18,6 @@ let g:syntastic_enable_highlighting=1
 let g:NERDTreeDirArrows=0
 let g:NERDTreeShowHidden=1
 
-" NerdTreeTabs
-let g:nerdtree_tabs_open_on_console_startup=0
-
 " Vim Airline
 let g:airline#extensions#tabline#enabled = 1
 
@@ -43,24 +40,6 @@ if !exists('g:neocomplete#sources#omni#input_patterns')
 endif
 let g:neocomplete#sources#omni#input_patterns.cucumber =
 \ '\(When\|Then\|Given\|And\)\s.*$'
-
-" For smart TAB completion.
-inoremap <expr><TAB>  pumvisible() ? "\<C-n>" :
-        \ <SID>check_back_space() ? "\<TAB>" :
-        \ neocomplete#start_manual_complete()
-inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
-inoremap <expr><Space> pumvisible() ? neocomplete#close_popup() : "\<Space>"
-
-" <CR>: close popup and save indent.
-inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
-function! s:my_cr_function()
-  return pumvisible() ? neocomplete#close_popup() : "\<CR>"
-endfunction
-
-function! s:check_back_space()
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~ '\s'
-endfunction
 
 " I want to complete from all buffers.
  let g:neocomplcache_same_filetype_lists = {}
@@ -88,10 +67,8 @@ call unite#custom#profile('default', 'context', {
 
 let g:unite_force_overwrite_statusline = 0
 
-call unite#custom_source('file_rec,file_rec/async,file_mru,file,buffer,grep',
-      \ 'ignore_pattern', join([
-      \ '\.git/',
-      \ ], '\|'))
+" Use ag for file_rec/async
+let g:unite_source_rec_async_command='ag --follow --nocolor --nogroup --ignore ".svn" --ignore ".git" --hidden -g ""'
 
 call unite#filters#matcher_default#use(['matcher_fuzzy'])
 call unite#filters#sorter_default#use(['sorter_rank'])
@@ -99,17 +76,11 @@ call unite#filters#sorter_default#use(['sorter_rank'])
 autocmd FileType unite call s:unite_settings()
 
 function! s:unite_settings()
-  let b:SuperTabDisabled=1
   imap <silent><buffer><expr> <C-x> unite#do_action('split')
   imap <silent><buffer><expr> <C-v> unite#do_action('vsplit')
   imap <silent><buffer><expr> <C-t> unite#do_action('tabopen')
 
-  imap <silent><buffer><expr> <C-p>
-        \ empty(filter(range(1, winnr('$')),
-        \ 'getwinvar(v:val, "&previewwindow") != 0')) ?
-        \ unite#do_action('preview') : ":\<C-u>pclose!\<CR>"
-
-  nnoremap <silent><buffer> <C-j> <Plug>(unite_toggle_auto_preview)
+  nmap <silent><buffer> <C-j> <Plug>(unite_toggle_auto_preview)
   nmap <buffer> <ESC> <Plug>(unite_exit)
 endfunction
 
@@ -123,19 +94,51 @@ endif
 
 let g:unite_source_history_yank_enable = 1
 
- autocmd BufEnter *
-    \   if empty(&buftype)
-    \|      nnoremap <buffer> [unite]<C-]> :<C-u>UniteWithCursorWord -immediately tag<CR>
-    \|  endif
-
 nnoremap <silent> [unite]/ :Unite grep:.<cr>
-nnoremap <silent> [unite]f :<C-u>Unite  -buffer-name=files buffer file_rec/async:!<cr>
-nnoremap <silent> [unite]b :<C-u>UniteWithBufferDir  -buffer-name=files buffer file_rec/async:!<cr>
-nnoremap <silent> [unite]t :<C-u>Unite  tag<cr>
+nnoremap <silent> [unite]f :<C-u>Unite -buffer-name=files buffer file_rec/async:!<cr>
+nnoremap <silent> [unite]b :<C-u>UniteWithBufferDir -buffer-name=files buffer file_rec/async:!<cr>
+nnoremap <silent> [unite]t :<C-u>Unite tag<cr>
 nnoremap <silent> [unite]y :Unite history/yank<cr>
 nnoremap [unite]r :Unite rails/
 
-" Session Save
-let g:session_autoload = 'yes'
-let g:session_autosave = 'yes'
-let g:session_directory= '~/.vim_sessions/'
+" Unite tag
+let g:unite_source_tag_max_fname_length = 140
+
+" Vimfiler.vim
+let g:vimfiler_as_default_explorer = 1
+nnoremap <silent> [unite]e :VimFilerCreate<cr>
+
+" Neosnippets
+imap <C-k>     <Plug>(neosnippet_expand_or_jump)
+smap <C-k>     <Plug>(neosnippet_expand_or_jump)
+xmap <C-k>     <Plug>(neosnippet_expand_target)
+
+" For snippet_complete marker.
+if has('conceal')
+  set conceallevel=2 concealcursor=i
+endif
+
+" For smart TAB completion.
+imap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+      \ "\<Plug>(neosnippet_expand_or_jump)" :
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ neocomplete#start_manual_complete()
+inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
+inoremap <expr><Space> pumvisible() ? neocomplete#close_popup() : "\<Space>"
+
+smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+  \ "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
+
+" <CR>: close popup and save indent.
+inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
+function! s:my_cr_function()
+  return pumvisible() ? neocomplete#close_popup() : "\<CR>"
+endfunction
+
+function! s:check_back_space()
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~ '\s'
+endfunction
+
+

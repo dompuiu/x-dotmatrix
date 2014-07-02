@@ -91,6 +91,10 @@ nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
+nnoremap <C-Right> <C-w>h
+nnoremap <C-Down> <C-w>j
+nnoremap <C-Up> <C-w>k
+nnoremap <C-Left> <C-w>l
 
 " Set folde level start
 set foldlevelstart=5
@@ -98,4 +102,40 @@ set foldlevelstart=5
 if filereadable(expand('~/.vimrc.plugins.local'))
   source ~/.vimrc.plugins.local
 endif
+
+" Tell Vim about these sequences and enable them if TMUX is present, and TERM starts with screen
+if &term =~ '^screen' && exists('$TMUX')
+    set mouse+=a
+    " tmux knows the extended mouse mode
+    set ttymouse=xterm2
+    " tmux will send xterm-style keys when xterm-keys is on
+    execute "set <xUp>=\e[1;*A"
+    execute "set <xDown>=\e[1;*B"
+    execute "set <xRight>=\e[1;*C"
+    execute "set <xLeft>=\e[1;*D"
+    execute "set <xHome>=\e[1;*H"
+    execute "set <xEnd>=\e[1;*F"
+    execute "set <Insert>=\e[2;*~"
+    execute "set <Delete>=\e[3;*~"
+    execute "set <PageUp>=\e[5;*~"
+    execute "set <PageDown>=\e[6;*~"
+    execute "set <xF1>=\e[1;*P"
+    execute "set <xF2>=\e[1;*Q"
+    execute "set <xF3>=\e[1;*R"
+    execute "set <xF4>=\e[1;*S"
+    execute "set <F5>=\e[15;*~"
+    execute "set <F6>=\e[17;*~"
+    execute "set <F7>=\e[18;*~"
+    execute "set <F8>=\e[19;*~"
+    execute "set <F9>=\e[20;*~"
+    execute "set <F10>=\e[21;*~"
+    execute "set <F11>=\e[23;*~"
+    execute "set <F12>=\e[24;*~"
+endif
+
+" Fix messed arrows keys that sometimes are printing A,B,C or D
+map <Esc>[A <Up>
+map <Esc>[B <Down>
+map <Esc>[C <Right>
+map <Esc>[D <Left>
 

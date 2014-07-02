@@ -10,9 +10,9 @@ if [ -f $manualfile ]; then
   files="$(cat $manualfile)"
 else
   # Get list of files to link
+  includes=".vim .zsh"
   excludes=".gitignore"
-  base="$(find . -maxdepth 1 -name '.*' -not -name '.*.x.local' -type f | sed 's#^\./##' | grep -vF $excludes)"
-  files="$base"
+  base="$(find . -maxdepth 1 -name '.*' -not -name '.*.x.local' -not -name '*.swp' -type f | sed 's#^\./##' | grep -vF $excludes)" files="$base $includes"
 fi
 
 echo $files

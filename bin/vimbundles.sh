@@ -22,10 +22,10 @@ remove_bundle vim-vividchalk
 
 vim -c 'call pathogen#helptags()|q'
 
-cd ~/.vimbundles/vimproc.vim
+cd ~/.vim/bundle/vimproc.vim
 make -f make_mac.mak
 cd -
 
-cd ~/.vimbundles/tern_for_vim
+cd ~/.vim/bundle/tern_for_vim
 npm install
 cd -

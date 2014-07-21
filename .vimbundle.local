@@ -28,3 +28,4 @@ tpope/vim-bundler
 jelera/vim-javascript-syntax
 othree/javascript-libraries-syntax.vim
 marijnh/tern_for_vim
+krisajenkins/vim-projectlocal

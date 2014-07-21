@@ -13,12 +13,15 @@ then
     $dotmatrix_vimbundles
 fi
 
+cd ~/.vim/bundle/
 remove_bundle bufexplorer.zip
 remove_bundle ack.vim
 remove_bundle supertab
 remove_bundle bufkill.vim
 remove_bundle vim-javascript
 remove_bundle vim-vividchalk
+remove_bundle vim-hashrocket
+cd -
 
 vim -c 'call pathogen#helptags()|q'
 

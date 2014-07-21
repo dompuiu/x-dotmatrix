@@ -14,11 +14,10 @@ alias ctags="`brew --prefix`/bin/ctags"
 alias filemerge="/Applications/Xcode.app/Contents/Applications/FileMerge.app/Contents/MacOS/FileMerge"
 
 # Customize to your needs...
-export P4CONFIG=.p4env
-export WORKON_HOME=$HOME/Envs
-export PROJECT_HOME=$HOME/Devel
 export VIRTUALENVWRAPPER_SCRIPT=/usr/local/share/python/virtualenvwrapper.sh
 export PYTHONSTARTUP=$HOME/.pystartup
+export LC_ALL=en_US.UTF-8
+export GNUTERM=qt
 
 # Set to this to use case-sensitive completion
 # CASE_SENSITIVE="true"

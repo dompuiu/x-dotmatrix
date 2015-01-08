@@ -19,6 +19,18 @@ export PYTHONSTARTUP=$HOME/.pystartup
 export LC_ALL=en_US.UTF-8
 export GNUTERM=qt
 
+# Set clock and RVM version
+local rvm=''
+if which rvm-prompt &> /dev/null; then
+  rvm='%{$orange%}‹$(rvm-prompt i v g)›%{$reset_color%}'
+else
+  if which rbenv &> /dev/null; then
+    rvm='%{$orange%}‹$(rbenv version | sed -e "s/ (set.*$//")›%{$reset_color%}'
+  fi
+fi
+
+RPROMPT="%{$fg[green]%}%D{[%I:%M:%S]}%{$reset_color%} ${rvm}"
+
 # Set to this to use case-sensitive completion
 # CASE_SENSITIVE="true"
 

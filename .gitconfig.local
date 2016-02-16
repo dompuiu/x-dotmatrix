@@ -20,5 +20,7 @@
 	trustExitCode = true
 [mergetool]
 	prompt = false
+[core]
+	excludesfile = /Users/stancu/.gitignore_global
 [include]
 	path = ~/.gitconfig.x.local

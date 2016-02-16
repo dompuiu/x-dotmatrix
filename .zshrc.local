@@ -1,6 +1,12 @@
 # Path to your oh-my-zsh configuration.
 ZSH=$HOME/.oh-my-zsh
 
+#Init rbEnv
+if (( $+commands[rbenv] ))
+then
+  eval "$(rbenv init -)"
+fi
+
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
@@ -11,11 +17,12 @@ ZSH_THEME="steeef"
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias ctags="`brew --prefix`/bin/ctags"
-alias filemerge="/Applications/Xcode.app/Contents/Applications/FileMerge.app/Contents/MacOS/FileMerge"
 
 # Customize to your needs...
 export VIRTUALENVWRAPPER_SCRIPT=/usr/local/share/python/virtualenvwrapper.sh
 export PYTHONSTARTUP=$HOME/.pystartup
+export PROJECT_BASE_DIR="$HOME/Development"
+export REACTOR_BASE_DIR="$HOME/Development/activation"
 export LC_ALL=en_US.UTF-8
 export GNUTERM=qt
 export PATH="$PATH:/Users/stancu/.composer/vendor/bin"

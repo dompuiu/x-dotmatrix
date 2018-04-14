@@ -17,6 +17,7 @@ ZSH_THEME="steeef"
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias ctags="`brew --prefix`/bin/ctags"
+alias gitclean="git branch --merged master | grep -v -E 'production|master|staging' | xargs git branch -d"
 
 # Customize to your needs...
 export VIRTUALENVWRAPPER_SCRIPT=/usr/local/share/python/virtualenvwrapper.sh
@@ -75,3 +76,4 @@ HELPDIR=/usr/local/share/zsh/helpfiles
 xzrcl="$HOME/.zshrc.x.local"
 [[ ! -a $xzrcl ]] || source $xzrcl
 
+eval "$(/Users/stancu/dotmatrix/hr/bin/hr init -)"
